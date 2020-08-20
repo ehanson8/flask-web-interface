@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% for id, title in title_dict.items() %}
+    <div><p>{{ id }} : <b>{{ title }}</b></p></div>
+  {% endfor %}
+{% endblock %}
