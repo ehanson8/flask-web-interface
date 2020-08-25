@@ -3,8 +3,10 @@
         <title>{{ set }} </title>
     </head>
     <body>
-      <div>Reporting Interface: <a href="{{ url_for('index') }}">Entry</a></div>
-      <div>Reporting Interface: <a href="{{ url_for('report') }}">Report</a></div>
+      <div>Reporting Interface: <a href="{{ url_for('index') }}">Home</a></div>
+      <div>Reporting Interface: <a href="{{ url_for('search') }}">Search Report</a></div>
+      <div>Reporting Interface: <a href="{{ url_for('record') }}">Record Report</a></div>
+      <div>Reporting Interface: <a href="{{ url_for('report') }}">Report Results</a></div>
       <hr>
       {% with messages = get_flashed_messages() %}
         {% if messages %}

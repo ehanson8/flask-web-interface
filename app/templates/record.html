@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Report Parameters</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.url.label }}<br>
+            {{ form.url(size=60) }}
+        </p>
+        <p>
+            {{ form.repo_id.label }}<br>
+            {{ form.repo_id(size=10) }}
+        </p>
+        {% for error in form.repo_id.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        <p>
+            {{ form.rec_type.label }}<br>
+            {{ form.rec_type(size=2) }}
+        </p>
+        <p>
+            {{ form.field.label }}<br>
+            {{ form.field(size=32) }}
+        </p>
+        {% for error in form.field.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        <p>
+            {{ form.values_or_count.label }}<br>
+            {{ form.values_or_count(size=2) }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

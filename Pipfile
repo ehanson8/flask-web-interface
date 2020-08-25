@@ -11,6 +11,7 @@ gunicorn = "*"
 sickle = "*"
 flask-wtf = "*"
 boto3 = "*"
+archivessnake = "*"
 
 [requires]
 python_version = "3.8"

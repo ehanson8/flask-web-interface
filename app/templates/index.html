@@ -1,25 +1,5 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Report Parameters</h1>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.url.label }}<br>
-            {{ form.url(size=32) }}
-        </p>
-        <p>
-            {{ form.repo_id.label }}<br>
-            {{ form.repo_id(size=32) }}
-        </p>
-        <p>
-            {{ form.rec_type.label }}<br>
-            {{ form.rec_type(size=3) }}
-        </p>
-        <p>
-            {{ form.field.label }}<br>
-            {{ form.field(size=32) }}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+<h1>Reporting Interface</h1>
 {% endblock %}
