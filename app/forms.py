@@ -7,8 +7,7 @@ class SearchForm(FlaskForm):
     url = StringField('URL', validators=[DataRequired()],
                       default='https://aspace-staff-dev.mit.edu/staff/api')
     repo_id = RadioField('Repository', validators=[DataRequired()],
-                         choices=['2', '3', '4', '5', '6', '7', '8', '9',
-                                  '10'],
+                         choices=['2', '5'],
                          default='2')
     rec_type = RadioField('Record Type', validators=[DataRequired()],
                           choices=['accession', 'resource'],
@@ -23,8 +22,7 @@ class RecordForm(FlaskForm):
     url = StringField('URL', validators=[DataRequired()],
                       default='https://aspace-staff-dev.mit.edu/staff/api')
     repo_id = RadioField('Repository', validators=[DataRequired()],
-                         choices=['2', '3', '4', '5', '6', '7', '8', '9',
-                                  '10'],
+                         choices=['2', '5'],
                          default='2')
     rec_type = RadioField('Record Type', validators=[DataRequired()],
                           choices=['accessions', 'resources'],

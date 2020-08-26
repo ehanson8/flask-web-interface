@@ -1,3 +1,5 @@
+import csv
+import datetime
 import json
 import os
 
@@ -39,6 +41,17 @@ def create_client(url):
     client = ASnakeClient(baseurl=url, username=username, password=password)
     as_ops = AsOperations(client)
     return as_ops
+
+
+def create_csv(dict_list):
+    dt = datetime.datetime.utcnow().isoformat(timespec='seconds')
+    with open(f'report-{dt}.csv', 'w') as fp:
+        header = list(dict_list[0].keys())
+        f = csv.DictWriter(fp, fieldnames=header)
+        f.writeheader()
+        for d in dict_list:
+            f.writerow(d)
+    return fp.name
 
 
 def create_rec_dict(rec_obj, client):
@@ -95,7 +108,8 @@ def rec_report(url, repo_id, rec_type, field, values_or_count):
         else:
             rec_dict[field] = values
         dict_list.append(rec_dict)
-    return dict_list
+    file = create_csv(dict_list)
+    return file
 
 
 def search_report(url, repo_id, rec_type, field, search):
@@ -109,4 +123,5 @@ def search_report(url, repo_id, rec_type, field, search):
         values = get_values(rec_obj, field)
         rec_dict[field] = values
         dict_list.append(rec_dict)
-    return dict_list
+    file = create_csv(dict_list)
+    return file

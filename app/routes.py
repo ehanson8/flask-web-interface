@@ -59,7 +59,7 @@ def record():
 @app.route('/report')
 def report():
     if 'search' in session:
-        dict_list = models.search_report(
+        file = models.search_report(
                                       session['url'],
                                       session['repo_id'],
                                       session['rec_type'],
@@ -67,7 +67,7 @@ def report():
                                       session['search']
         )
     else:
-        dict_list = models.rec_report(
+        file = models.rec_report(
                                       session['url'],
                                       session['repo_id'],
                                       session['rec_type'],
@@ -75,5 +75,5 @@ def report():
                                       session['values_or_count']
         )
     return render_template(
-        'report.html', title='Report Results', dict_list=dict_list
+        'report.html', title='Report Results', file=file
     )

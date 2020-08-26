@@ -1,11 +1,5 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% for dict in dict_list %}
-    {% for k, v in dict.items() %}
-      <div><p>{{ k }} : <b>{{ v }}</b></p></div>
-    {% endfor %}
-      <br>
-      <br>
-  {% endfor %}
+  {{ file }}
 {% endblock %}
