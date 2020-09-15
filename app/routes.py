@@ -42,14 +42,19 @@ def record():
         session['url'] = rec_form.url.data
         session['repo_id'] = rec_form.repo_id.data
         session['rec_type'] = rec_form.rec_type.data
-        session['field'] = rec_form.field.data
-        session['values_or_count'] = rec_form.values_or_count.data
+        session['field1'] = rec_form.field1.data
+        session['values_or_count1'] = rec_form.values_or_count1.data
+        session['field2'] = rec_form.field2.data
+        session['values_or_count2'] = rec_form.values_or_count2.data
         flash(
               'Submitted URL: {}, Repository: {}, Record Type: {}, '
-              'Field: {}, Values or Count: {}'.format(
+              'Field 1: {}, Values or Count 1: {}, Field 2: {}, '
+              'Values or Count 2: {}'.format(
                                 rec_form.url.data, rec_form.repo_id.data,
-                                rec_form.rec_type.data, rec_form.field.data,
-                                rec_form.values_or_count.data
+                                rec_form.rec_type.data, rec_form.field1.data,
+                                rec_form.values_or_count1.data,
+                                rec_form.field2.data,
+                                rec_form.values_or_count2.data
               )
         )
         return redirect(url_for('report'))
@@ -71,8 +76,10 @@ def report():
                                       session['url'],
                                       session['repo_id'],
                                       session['rec_type'],
-                                      session['field'],
-                                      session['values_or_count']
+                                      session['field1'],
+                                      session['values_or_count1'],
+                                      session['field2'],
+                                      session['values_or_count2']
         )
     return render_template(
         'report.html', title='Report Results', file=file

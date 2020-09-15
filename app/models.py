@@ -93,7 +93,8 @@ def get_values(rec_obj, field):
     return field_values
 
 
-def rec_report(url, repo_id, rec_type, field, values_or_count):
+def rec_report(url, repo_id, rec_type, field1, values_or_count1, field2,
+               values_or_count2):
     as_ops = create_client(url)
     endpoint = f'/repositories/{repo_id}/{rec_type}'
     ids = as_ops.get_all_records(endpoint)
@@ -102,11 +103,17 @@ def rec_report(url, repo_id, rec_type, field, values_or_count):
     for id in ids:
         rec_obj = as_ops.get_record(f'{endpoint}/{id}')
         rec_dict = create_rec_dict(rec_obj, as_ops)
-        values = get_values(rec_obj, field)
-        if values_or_count == 'count':
-            rec_dict[field] = len(values)
+        values1 = get_values(rec_obj, field1)
+        if values_or_count1 == 'count':
+            rec_dict[field1] = len(values1)
         else:
-            rec_dict[field] = values
+            rec_dict[field1] = values1
+        if field2 != '':
+            values2 = get_values(rec_obj, field2)
+            if values_or_count2 == 'count':
+                rec_dict[field2] = len(values2)
+            else:
+                rec_dict[field2] = values2
         dict_list.append(rec_dict)
     file = create_csv(dict_list)
     return file

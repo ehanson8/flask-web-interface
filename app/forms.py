@@ -27,9 +27,13 @@ class RecordForm(FlaskForm):
     rec_type = RadioField('Record Type', validators=[DataRequired()],
                           choices=['accessions', 'resources'],
                           default='resources')
-    field = StringField('Field', validators=[DataRequired()])
-    values_or_count = RadioField('Values or Count',
-                                 validators=[DataRequired()],
-                                 choices=['count', 'values'],
-                                 default='values')
+    field1 = StringField('Field 1', validators=[DataRequired()])
+    values_or_count1 = RadioField('Values or Count for Field 1',
+                                  validators=[DataRequired()],
+                                  choices=['count', 'values'],
+                                  default='values')
+    field2 = StringField('Field 2 (Optional)')
+    values_or_count2 = RadioField('Values or Count for Field 2',
+                                  choices=['count', 'values'],
+                                  default='values')
     submit = SubmitField('Submit')
